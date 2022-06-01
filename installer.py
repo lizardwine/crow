@@ -1,43 +1,55 @@
-import requests as req
 import os
-import time
-import getpass
-import rusia
-user = getpass.getuser()
-password = input("type your password: ")
-rpassword = input("repeat password: ")
-while password != rpassword:
-    print("password dom't match")
-    rpassword = input("repeat password: ")
+from rusia import moscu
+from constants import *
 
-print("creating dir...")
-os.system("mkdir \"C:/Users/%USERNAME%/crow\"")
+# Functions
+def Password():
+    """ 
+        asks for a password 
+    """
+    
+    password = input("Type your password: ")
+    rpassword = input("Repeat password: ")
 
-open(f"C:/Users/{user}/crow/password.txt","w").write(password)
-print("creating password file...")
-url = 'https://github.com/lizardwine/crow/raw/main/crow.exe'
-print("downloading executable")
-crow = req.get(url, allow_redirects=True)
+    while password != rpassword:
+        print("[ERROR] Password dom't match.")
+        rpassword = input("repeat password: ")
+    return password
 
-with open(f"C:/Users/{user}/crow.exe", 'wb') as crowf:
-    for chunk in crow.iter_content(chunk_size=1024):
-        if chunk:
-            crowf.write(chunk)
 
-print("creating database")
-db = rusia.moscu(f"C:/Users/{user}/crow/passwords")
+def Creating(password):
+    """
+        create folderPsw and filePsw
+    """
 
-db.execute("""CREATE TABLE "passwords" (
-    "id"    INTEGER UNIQUE,
-    "password"  TEXT,
-    "account"   TEXT,
-    "page"  TEXT,
-    "email" TEXT,
-    "uname" TEXT UNIQUE,
-    PRIMARY KEY("id" AUTOINCREMENT)
-);""")
+    print("[SUCCESS] Creating crow dirrectory. ")
+    os.makedirs(folderPsw, exist_ok=True)
 
-db.close()
-print("finish...")
-print("\nTYPE crow IN THE TERMINAL TO USE CROW\n")
-os.system("pause")
+    print("[SUCCESS] Creating password file.")
+    open(filePsw,"w").write(password)
+
+
+def DataBase():
+    """
+        create dataBase filePsw
+    """
+
+    print("[SUCCESS] Creating database.")
+    db = moscu(filePsw[:-4])
+    db.execute(table)
+    db.close()
+
+# Main
+if __name__ == "__main__":
+    password = Password()
+    Creating(password)
+    
+    print("[SUCCESS] Downloading executable.")
+    with open("crow.exe", 'wb') as crowf:
+        for chunk in crow.iter_content(chunk_size=1024):
+            if chunk:
+                crowf.write(chunk)
+    DataBase()
+    
+    print("[FINISH] \n\n"
+        "TYPE crow IN THE TERMINAL TO USE CROW\n")
