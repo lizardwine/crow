@@ -48,7 +48,7 @@ def renew_pass(uname,length = 32,Ascii=[33,126]):
 def delete_pass(uname):
 	db.execute("DELETE FROM passwords WHERE uname = ?",(uname,))
 def change_pass(uname,new_pass):
-	db.execute("UPDATE passwords SET password = ?, uname = ? WHERE uname = ?",(new_pass,"".join(list(uname)[:-1]) + list(new_pass)[0],uname,))
+	db.execute("UPDATE passwords SET password = ? WHERE uname = ?",(new_pass,uname,))
 def change_uname(uname,new_uname):
 	db.execute("UPDATE passwords SET uname = ? WHERE uname = ?",(new_uname,uname,))
 def change_page(uname,page):
