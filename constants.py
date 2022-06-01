@@ -4,12 +4,13 @@ from getpass import getuser
 # installer
 # --------------------------------------------------------------------
 # Password folder Directory
-folderPsw = "crow"
+user = getuser()
+folderPsw = f"C:/Users/{user}/crow"
 
 # Password file directory
 filePsw = f"{folderPsw}/Password.txt"
 
-user = getuser()
+
 url = 'https://github.com/lizardwine/crow/raw/main/crow.exe'
 crow = get(url, allow_redirects=True)
 
