@@ -52,7 +52,7 @@ def readPass(db):
 		print(f"Password not found for {variable_name}: {variable}" if variable != "*" else "")
 
 if __name__ == "__main__":
-	db = Db(filePsw)
+	db = Db(folderPsw + "/passwords")
 
 	i = 0
 	while i < 3:
