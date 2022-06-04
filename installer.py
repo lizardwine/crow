@@ -3,13 +3,16 @@ import os
 import time
 import getpass
 import rusia
+import hashlib
+def ash(stri):
+    return hashlib.sha256(stri.encode('utf-8')).hexdigest()
 user = getpass.getuser()
 password = input("type your password: ")
 rpassword = input("repeat password: ")
 while password != rpassword:
     print("password dom't match")
     rpassword = input("repeat password: ")
-password = hash(password)
+password = ash(password)
 print("creating dir...")
 os.system("mkdir \"C:/Users/%USERNAME%/crow\"")
 
