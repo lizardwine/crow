@@ -9,7 +9,7 @@ rpassword = input("repeat password: ")
 while password != rpassword:
     print("password dom't match")
     rpassword = input("repeat password: ")
-
+password = hash(password)
 print("creating dir...")
 os.system("mkdir \"C:/Users/%USERNAME%/crow\"")
 
