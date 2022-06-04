@@ -5,10 +5,13 @@ import os
 import rusia
 import random
 import getpass
+import hashlib
 import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 db = rusia.moscu(f"C:\\Users\\{getpass.getuser()}\\crow\\passwords")
+def ash(stri):
+    return hashlib.sha256(stri.encode('utf-8')).hexdigest()
 def gen_number(Except = [34,39,92,96],fromto=[33,126]):
 	r = random.randint(fromto[0],fromto[1])
 	while r in Except:
@@ -62,7 +65,7 @@ opc = "0"
 i = 0
 while i < 3:
 	password = getpass.getpass("password(hided for security): ")
-	if str(hash(password)) == open(f"C:/Users/{getpass.getuser()}/crow/password.txt").read():
+	if str(ash(password)) == open(f"C:/Users/{getpass.getuser()}/crow/password.txt").read():
 		opc = None
 		#threading.Thread(target = timer).start()
 		break
