@@ -13,7 +13,7 @@ password = hash(password)
 print("creating dir...")
 os.system("mkdir \"C:/Users/%USERNAME%/crow\"")
 
-open(f"C:/Users/{user}/crow/password.txt","w").write(password)
+open(f"C:/Users/{user}/crow/password.txt","w").write(str(password))
 print("creating password file...")
 url = 'https://github.com/lizardwine/crow/raw/main/crow.exe'
 print("downloading executable")
