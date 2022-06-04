@@ -62,7 +62,7 @@ opc = "0"
 i = 0
 while i < 3:
 	password = getpass.getpass("password(hided for security): ")
-	if password == open(f"C:/Users/{getpass.getuser()}/crow/password.txt").read():
+	if str(hash(password)) == open(f"C:/Users/{getpass.getuser()}/crow/password.txt").read():
 		opc = None
 		#threading.Thread(target = timer).start()
 		break
