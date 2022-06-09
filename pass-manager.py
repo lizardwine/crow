@@ -26,7 +26,17 @@ def gen_pass(length = 32,Ascii=[33,126]):
 		if str(i) in password:
 			break
 	else:
-		password += "124"
+		password += str(random.randint(0,100))
+	for i in range(65,91):
+		if chr(i) in password:
+			break		
+	else:
+		password += chr(random.randint(65,90))
+	for i in range(97,123):
+		if chr(i) in password:
+			break
+	else:
+		password += chr(random.randint(97,122))
 	return password
 def reg_pass(uname,account,page,email,length = 32,Ascii=[33,126]):
 	global opc
