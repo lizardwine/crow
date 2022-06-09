@@ -1,4 +1,4 @@
-# crow v1.6.2.0
+# crow v1.7.0.0
 a simple password manager
 
 
